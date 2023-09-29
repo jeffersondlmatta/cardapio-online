@@ -33,6 +33,10 @@ b {
     font-family: 'PoppinsMedium', 'Rubik' ,   'sans-serif' ;
 }
 
+.hidden {
+    display: none !important;
+}
+
 a {
     color: var(--color-black);
 }
@@ -338,6 +342,14 @@ a.navbar-brand {
 
 }
 
+.backgroud-depoimentos {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 400px;
+    background-image: url(../img/bg-icons-1.png);
+}
+
 .card-depoimentos {
     height: 390px;
     width: 390px;
@@ -369,6 +381,14 @@ a.navbar-brand {
     background-image: url(../img/diego.jpg);
     background-size: cover;
 }
+#depoimento-2  .imagem-depoimento{
+    background-image: url(../img/ana.jpg);
+    background-size: cover;
+}
+#depoimento-3  .imagem-depoimento{
+    background-image: url(../img/joao.jpg);
+    background-size: cover;
+}
 .nome-depoimento {
     color: black;
     font-size: 22px;
@@ -380,4 +400,25 @@ a.navbar-brand {
 }
 .nota-depoimento span {
     color: black;
+}
+
+.texto-depoimento {
+    display: flex;
+    font-size: 16px;
+    color: black;
+}
+.texto-depoimento i {
+    font-size: 35px;
+    color: var(--color-primary);   
+}
+
+.texto-depoimento i:first-child {
+    padding-left: 10px;
+    padding-right: 35px;
+}
+.texto-depoimento i:last-child {
+    padding-left: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
 }
