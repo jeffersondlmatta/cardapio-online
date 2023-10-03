@@ -457,7 +457,7 @@ a.navbar-brand {
 }
 
 .container-logo-footer, .container-texto-footer, .container-redes-footer {
-    display: flex!;
+    display: flex;
     align-items: center ;
 
 }
