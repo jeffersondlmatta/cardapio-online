@@ -450,6 +450,7 @@ a.navbar-brand {
 
 .footer {
     background-color: var(--color-secundary);
+    position: relative;
 }
 
 .logo-footer{
@@ -459,7 +460,6 @@ a.navbar-brand {
 .container-logo-footer, .container-texto-footer, .container-redes-footer {
     display: flex;
     align-items: center ;
-
 }
 .container-logo-footer {
     justify-content: start 
