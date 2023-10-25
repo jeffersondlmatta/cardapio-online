@@ -35,6 +35,9 @@ cardapio.metodos = {
 
         })
 
+        // REMOVE  O ACTIVE 
+        $(".container-menu a").removeClass('active');
+
     }
 
 }
