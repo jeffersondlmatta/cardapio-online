@@ -17,12 +17,18 @@ cardapio.eventos = {
 
 cardapio.metodos = {
     // OBTEM A LISTA DE ITENS DO CARDAPIO
-    obterItensCardapio: (categoria = 'burgers') => {
+    obterItensCardapio: (categoria = 'burgers', vermais = false) => {
         
         var filtro = MENU[categoria];
         console.log(filtro);
 
-        $('#itensCardapio').html('') // LIMPAR O HTML PARA NAO SOBREPOR TODOS OS ITENS, SEPARA POR CATEGORIAS
+        if (!vermais) {
+            $('#itensCardapio').html('') // LIMPAR O HTML PARA NAO SOBREPOR TODOS OS ITENS, SEPARA POR CATEGORIAS
+            $('#btnVerMais').removeClass('hidden')
+
+        }
+
+        
 
         $.each(filtro, (i, e) => {
 
@@ -30,15 +36,36 @@ cardapio.metodos = {
             .replace(/\${nome}/g, e.name)
             .replace(/\${preco}/g, e.price.toFixed(2).replace('.', (',')))
 
+            // BTN VER MAIS clicado
+            if (vermais && i >= 8 && i < 12 ) {
+                $('#itensCardapio').append(temp)
 
-            $('#itensCardapio').append(temp)
+            }
+            //PAGINAÇÃO  INICIAL 8 ITENS 
+            if (!vermais && i < 8 ) {
+                $('#itensCardapio').append(temp)
+                
+                
+            }
 
         })
 
         // REMOVE  O ACTIVE 
         $(".container-menu a").removeClass('active');
 
-    }
+        //SETA O MENU PARA O ATIVO 
+        $("#menu-" + categoria).addClass('active')
+
+    },
+    //CLICK NO VER MAIS 
+    verMais: () => {
+
+        var ativo = $('.container-menu a.active').attr('id').split('menu-')[1];
+        cardapio.metodos.obterItensCardapio(ativo, true);
+
+        $("#btnVerMais").addClass('hidden');
+
+    },
 
 }
 
