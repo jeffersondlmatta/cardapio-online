@@ -86,7 +86,7 @@ cardapio.metodos = {
         $('#qntd-' + id).text(qntdAtual +  1)
         
     },
-    //adcionar item ao carrinho 
+    //adcionar item ao carrinho o item do cardapio
     adcionarAoCarrinho: (id) => {
 
         let qntdAtual = parseInt( $('#qntd-' + id).text());
@@ -117,13 +117,38 @@ cardapio.metodos = {
                 item[0].qntd = qntdAtual;
                 MEU_CARRINHO.push(item[0])
             }
-
+            alert("Item adcionado ao carrinho")
             $('#qntd-' + id ).text(0);
+
+            cardapio.metodos.atualizarBadgeTotal();
 
 
 
 
         }
+
+
+
+    },
+    //atualiza o badge de totais  dos botoes " meu carrinho" 
+    atualizarBadgeTotal: () => {
+        var total = 0 
+
+
+        $.each(MEU_CARRINHO, (i,e) => {
+            total += e.qntd
+        })
+
+            if (total > 0) {
+                $(".botao-carrinho").removeClass('hidden')
+                $(".container-total-carrinho").removeClass('hidden')
+            }
+            else {
+                $(".botao-carrinho").addClass('hidden') 
+                $(".container-total-carrinho").addClass('hidden') 
+            }
+            $(".badge-total-carrinho").html(total);
+
 
 
 
@@ -159,3 +184,5 @@ cardapio.templates = {
 
 
 }
+
+// voltar no video tempo 13 minutos
