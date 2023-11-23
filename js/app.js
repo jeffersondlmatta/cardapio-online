@@ -117,7 +117,8 @@ cardapio.metodos = {
                 item[0].qntd = qntdAtual;
                 MEU_CARRINHO.push(item[0])
             }
-            alert("Item adcionado ao carrinho")
+
+            cardapio.metodos.mensagem("Iten adcionado ao carrinho")
             $('#qntd-' + id ).text(0);
 
             cardapio.metodos.atualizarBadgeTotal();
@@ -152,6 +153,15 @@ cardapio.metodos = {
 
 
 
+    }, 
+
+    mensagem: (texto, cor='red', tempo = 3500) => {
+          
+        let msg = `<div class="toast ${cor}"> ${texto}</div>`;
+        
+        $("#container-mensagens").append(msg);
+        
+
     }
 
 }
@@ -185,4 +195,3 @@ cardapio.templates = {
 
 }
 
-// voltar no video tempo 13 minutos
