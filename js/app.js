@@ -118,7 +118,7 @@ cardapio.metodos = {
                 MEU_CARRINHO.push(item[0])
             }
 
-            cardapio.metodos.mensagem("Iten adcionado ao carrinho", "green")
+            cardapio.metodos.mensagem("Iten adcionado ao carrinho")
             $('#qntd-' + id ).text(0);
 
             cardapio.metodos.atualizarBadgeTotal();
@@ -310,23 +310,13 @@ cardapio.metodos = {
     
     //mensagens do add ao carrinho 
     mensagem: (texto, cor='red', tempo = 3500) => {
-
-        let id = Math.floor(Date.now() * Math.random()).toString(); //criando um id aleatorio
           
-        let msg = `<div id="msg-${id}" class=" animated fadeInDown toast ${cor}"> ${texto}</div>`;
+        let msg = `<div class="toast ${cor}"> ${texto}</div>`;
         
         $("#container-mensagens").append(msg);
-
-       setTimeout(() => {  
-        $("#msg-" + id).removeClass('fadeInDown');       
-        $("#msg-" + id).addClass('fadeOutUp');       
-        setTimeout(() => {
-            $("#msg-" + id).remove(); 
-        },800);     
-       },tempo);
         
 
-    }
+    },
 
 }
 
@@ -354,22 +344,22 @@ cardapio.templates = {
 
             `,
 
-            itemCarrinho: `
-            <div class="col-12 item-carrinho">
-                <div class="img-produto">
-                    <img src="\${img}" />
-                </div>
-                <div class="dados-produto">
-                    <p class="title-produto"><b>\${nome}</b></p>
-                    <p class="price-produto"><b>R$ \${preco}</b></p>
-                </div>
-                <div class="add-carrinho">
-                    <span class="btn-menos" onclick="cardapio.metodos.diminuirQuantidadeCarrinho('\${id}')"><i class="fas fa-minus"></i></span>
-                    <span class="add-numero-itens" id="qntd-carrinho-\${id}">\${qntd}</span>
-                    <span class="btn-mais" onclick="cardapio.metodos.aumentarQuantidadeCarrinho('\${id}')"><i class="fas fa-plus"></i></span>
-                    <span class="btn btn-remove no-mobile" onclick="cardapio.metodos.removerItemCarrinho('\${id}')"><i class="fa fa-times"></i></span>
-                </div>
+    itemCarrinho: `
+         <div class="col-12 item-carrinho">
+            <div class="img-produto">
+                <img src="\${img}" />
             </div>
+            <div class="dados-produto">
+                <p class="title-produto"><b>\${nome}</b></p>
+                <p class="price-produto"><b>R$ \${preco}</b></p>
+            </div>
+            <div class="add-carrinho">
+                <span class="btn-menos" onclick="cardapio.metodos.diminuirQuantidadeCarrinho('\${id}')"><i class="fas fa-minus"></i></span>
+                <span class="add-numero-itens" id="qntd-carrinho-\${id}">\${qntd}</span>
+                <span class="btn-mais" onclick="cardapio.metodos.aumentarQuantidadeCarrinho('\${id}')"><i class="fas fa-plus"></i></span>
+                <span class="btn btn-remove no-mobile" onclick="cardapio.metodos.removerItemCarrinho('\${id}')"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
     `,
 
     
