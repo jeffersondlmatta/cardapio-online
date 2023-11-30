@@ -155,6 +155,7 @@ cardapio.metodos = {
 
     }, 
 
+<<<<<<< HEAD
     //abrir modalfull- carrinho 
     abrirCarrinho: (abrir) => {
 
@@ -309,6 +310,8 @@ cardapio.metodos = {
     },
     
     //mensagens do add ao carrinho 
+=======
+>>>>>>> parent of 51e32f2 (atualizado)
     mensagem: (texto, cor='red', tempo = 3500) => {
           
         let msg = `<div class="toast ${cor}"> ${texto}</div>`;
