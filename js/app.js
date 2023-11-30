@@ -153,80 +153,82 @@ cardapio.metodos = {
 
 
 
-    }, 
-
-<<<<<<< HEAD
-    //abrir modalfull- carrinho 
+    },
+    // abrir a modal de carrinho
     abrirCarrinho: (abrir) => {
 
-        if(abrir) {
-            $('#modal-carrinho').removeClass('hidden');
+        if (abrir) {
+            $("#modalCarrinho").removeClass('hidden');
             cardapio.metodos.carregarCarrinho();
         }
         else {
-            $('#modal-carrinho').addClass('hidden');
+            $("#modalCarrinho").addClass('hidden');
         }
+
     },
-    //manipula as etapas do carrinho 
+
+    // altera os texto e exibe os botões das etapas
     carregarEtapa: (etapa) => {
 
-        if(etapa == 1) {
-            $('#lblTituloEtapa').text('Seu carrinho: ');
-            $('#itensCarrinho').removeClass('hidden');
-            $('#localEntrega').addClass('hidden');
-            $('#resulmoCarrinho').addClass('hidden');
+        if (etapa == 1) {
+            $("#lblTituloEtapa").text('Seu carrinho:');
+            $("#itensCarrinho").removeClass('hidden');
+            $("#localEntrega").addClass('hidden');
+            $("#resumoCarrinho").addClass('hidden');
 
-            $('.etapa').removeClass('active');
-            $('.etapa1').addClass('active');
+            $(".etapa").removeClass('active');
+            $(".etapa1").addClass('active');
 
-            $('#btnEtapaPedido').removeClass('hidden');
-            $('#btnEtapaEndereço').addClass('hidden');
-            $('#btnEtapaResumo').addClass('hidden');
-            $('#btnVoltar').addClass('hidden');
-     
+            $("#btnEtapaPedido").removeClass('hidden');
+            $("#btnEtapaEndereco").addClass('hidden');
+            $("#btnEtapaResumo").addClass('hidden');
+            $("#btnVoltar").addClass('hidden');
         }
-        if(etapa==2) {
-            $('#lblTituloEtapa').text('Endereço de entrega: ');
-            $('#itensCarrinho').addClass('hidden');
-            $('#localEntrega').removeClass('hidden');
-            $('#resulmoCarrinho').addClass('hidden');
+        
+        if (etapa == 2) {
+            $("#lblTituloEtapa").text('Endereço de entrega:');
+            $("#itensCarrinho").addClass('hidden');
+            $("#localEntrega").removeClass('hidden');
+            $("#resumoCarrinho").addClass('hidden');
 
-            $('.etapa').removeClass('active');
-            $('.etapa1').addClass('active');
-            $('.etapa2').addClass('active');
+            $(".etapa").removeClass('active');
+            $(".etapa1").addClass('active');
+            $(".etapa2").addClass('active');
 
-            $('#btnEtapaPedido').addClass('hidden');
-            $('#btnEtapaEndereço').removeClass('hidden');
-            $('#btnEtapaResumo').addClass('hidden');
-            $('#btnVoltar').removeClass('hidden');
-
+            $("#btnEtapaPedido").addClass('hidden');
+            $("#btnEtapaEndereco").removeClass('hidden');
+            $("#btnEtapaResumo").addClass('hidden');
+            $("#btnVoltar").removeClass('hidden');
         }
-        if(etapa==3) {
-            $('#lblTituloEtapa').text('Resulmo do pedido: ');
-            $('#itensCarrinho').addClass('hidden');
-            $('#localEntrega').addClass('hidden');
-            $('#resulmoCarrinho').removeClass('hidden');
 
-            $('.etapa').removeClass('active');
-            $('.etapa1').addClass('active');
-            $('.etapa2').addClass('active');
-            $('.etapa3').addClass('active');
+        if (etapa == 3) {
+            $("#lblTituloEtapa").text('Resumo do pedido:');
+            $("#itensCarrinho").addClass('hidden');
+            $("#localEntrega").addClass('hidden');
+            $("#resumoCarrinho").removeClass('hidden');
 
+            $(".etapa").removeClass('active');
+            $(".etapa1").addClass('active');
+            $(".etapa2").addClass('active');
+            $(".etapa3").addClass('active');
 
-            $('#btnEtapaPedido').addClass('hidden');
-            $('#btnEtapaEndereço').addClass('hidden');
-            $('#btnEtapaResumo').removeClass('hidden');
-            $('#btnVoltar').removeClass('hidden');
-
+            $("#btnEtapaPedido").addClass('hidden');
+            $("#btnEtapaEndereco").addClass('hidden');
+            $("#btnEtapaResumo").removeClass('hidden');
+            $("#btnVoltar").removeClass('hidden');
         }
+
     },
 
-    voltarEtapa:() => {
-        let etapa = $('.etapa.active').length;
+    // botão de voltar etapa
+    voltarEtapa: () => {
+
+        let etapa = $(".etapa.active").length;
         cardapio.metodos.carregarEtapa(etapa - 1);
 
     },
-    //Carrega a lista de itenso do carrinho 
+
+    // carrega a lista de itens do carrinho
     carregarCarrinho: () => {
 
         cardapio.metodos.carregarEtapa(1);
@@ -308,10 +310,8 @@ cardapio.metodos = {
         cardapio.metodos.carregarValores();
 
     },
-    
-    //mensagens do add ao carrinho 
-=======
->>>>>>> parent of 51e32f2 (atualizado)
+     
+
     mensagem: (texto, cor='red', tempo = 3500) => {
           
         let msg = `<div class="toast ${cor}"> ${texto}</div>`;
@@ -325,30 +325,30 @@ cardapio.metodos = {
 
 cardapio.templates = {
 
-    item: `<div class="col-3 mb-5">
-    <div class="card card-item" id="\${id}">
-        <div class="img-produto">
-            <img src="\${img}" >
-        </div>  
-        <p class="title-produto text-center mt-4">
-            <b>\${nome}</b>
-        </p>
-        <p class="price-produto text-center">
-            <b>R$ \${preco}</b>
-        </p>
-        <div class="add-carrinho">
-            <span class="btn-menos" onclick="cardapio.metodos.diminuirQuantidade('\${id}')"><i class="fas fa-minus"></i></span>
-            <span class="add-numero-itens" id="qntd-\${id}">0</span>
-            <span class="btn-mais" onclick="cardapio.metodos.aumentarQuantidade('\${id}')"><i class="fas fa-plus"></i></span>
-            <span class="btn btn-add" onclick="cardapio.metodos.adcionarAoCarrinho('\${id}')" ><i class="fa fa-shopping-bag"></i></span>
+    item: `
+        <div class="col-12 col-lg-3 col-md-3 col-sm-6 mb-5 animated fadeInUp">
+            <div class="card card-item" id="\${id}">
+                <div class="img-produto">
+                    <img src="\${img}" />
+                </div>
+                <p class="title-produto text-center mt-4">
+                    <b>\${nome}</b>
+                </p>
+                <p class="price-produto text-center">
+                    <b>R$ \${preco}</b>
+                </p>
+                <div class="add-carrinho">
+                    <span class="btn-menos" onclick="cardapio.metodos.diminuirQuantidade('\${id}')"><i class="fas fa-minus"></i></span>
+                    <span class="add-numero-itens" id="qntd-\${id}">0</span>
+                    <span class="btn-mais" onclick="cardapio.metodos.aumentarQuantidade('\${id}')"><i class="fas fa-plus"></i></span>
+                    <span class="btn btn-add" onclick="cardapio.metodos.adicionarAoCarrinho('\${id}')"><i class="fa fa-shopping-bag"></i></span>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
-            `,
+    `,
 
     itemCarrinho: `
-         <div class="col-12 item-carrinho">
+        <div class="col-12 item-carrinho">
             <div class="img-produto">
                 <img src="\${img}" />
             </div>
@@ -365,8 +365,4 @@ cardapio.templates = {
         </div>
     `,
 
-    
-
-
 }
-
